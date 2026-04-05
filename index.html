@@ -1,508 +1,529 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-    <!-- metas -->
-    <meta charset="utf-8">
-    <meta name="author" content="themepaa">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Joshua Neronha">
-    <meta name="description" content="Joshua Neronha">
-    <!-- title -->
-    <title>Joshua Neronha</title>
-    <!-- theme css -->
-    <link href="static/css/style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a18;
+      --ink-muted: #6b6b65;
+      --ink-faint: #b0afa8;
+      --paper: #f8f7f3;
+      --rule: #e2e0d8;
+      --accent: #1a7fc1;
+      --accent-light: #e6f3fb;
+      --serif: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Header / Hero ── */
+    header {
+      padding: 5rem 0 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .hero-text { flex: 1; }
+
+    /* Headshot */
+    .headshot {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--rule);
+      margin-top: 0.25rem;
+    }
+
+    .headshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .headshot-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .headshot-placeholder svg {
+      width: 44px;
+      height: 44px;
+      fill: var(--ink-faint);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--ink-muted);
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Link pills ── */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem 0.35rem 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+
+    .links a:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .links a svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Entry rows (experience, education, publications) ── */
+    .entry {
+      display: flex;
+      gap: 1.1rem;
+      margin-bottom: 2rem;
+      align-items: start;
+    }
+
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-body { flex: 1; min-width: 0; }
+
+    /* Thumbnail */
+    .entry-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* Size variants — add size="sm" or size="lg" to the element */
+    .entry-thumb[size="sm"] { width: 36px; height: 36px; border-radius: 4px; }
+    .entry-thumb[size="lg"] { width: 72px; height: 72px; border-radius: 8px; }
+
+    .entry-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 5px;
+    }
+
+    /* Publication figures fill edge-to-edge */
+    .entry-thumb.pub-thumb img {
+      object-fit: cover;
+      padding: 0;
+      width = 240px;
+    }
+
+    /* Fallback icon */
+    .entry-thumb svg {
+      width: 60px;
+      height: 22px;
+      fill: var(--ink-faint);
+    }
+
+    .entry-thumb[size="lg"] svg { width: 60px; height: 30px; }
+    .entry-thumb[size="sm"] svg { width: 16px; height: 16px; }
+
+    /* Thumbnail */
+    .entry-thumb-pub {
+      width: 52px;
+      height: 52px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* Size variants — add size="sm" or size="lg" to the element */
+    .entry-thumb-pub[size="sm"] { width: 36px; height: 36px; border-radius: 4px; }
+    .entry-thumb-pub[size="lg"] { width: 72px; height: 72px; border-radius: 8px; }
+
+    .entry-thumb-pub img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 5px;
+    }
+
+    /* Publication figures fill edge-to-edge */
+    .entry-thumb-pub.pub-thumb img {
+      object-fit: cover;
+      padding: 0;
+      width = 240px;
+    }
+
+    /* Fallback icon */
+    .entry-thumb-pub svg {
+      width: 60px;
+      height: 22px;
+      fill: var(--ink-faint);
+    }
+
+    .entry-thumb-pub[size="lg"] svg { width: 120px; height: 30px; }
+    .entry-thumb-pub[size="sm"] svg { width: 16px; height: 16px; }
+
+    .entry-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+
+    .entry-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .entry-title a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .entry-sub {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--ink-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .entry-desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    .entry-venue {
+      display: inline-block;
+      font-size: 11px;
+      font-style: normal;
+      color: var(--accent);
+      background: var(--accent-light);
+      border-radius: 4px;
+      padding: 1px 7px;
+      margin-bottom: 0.35rem;
+    }
+
+    /* ── Contact ── */
+    .contact-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      min-width: 72px;
+    }
+
+    .contact-value { font-size: 0.95rem; color: var(--ink); }
+
+    .contact-value a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .contact-value a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Footer ── */
+    footer { padding: 2rem 0 3rem; }
+
+    footer p { font-size: 11px; color: var(--ink-faint); }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .hero-inner { flex-direction: column-reverse; gap: 1.25rem; }
+      .headshot { width: 72px; height: 72px; }
+      .entry-thumb,
+      .entry-thumb[size="lg"] { width: 144px; height: 144px; },
+      .entry-thumb[size="sm"] { width: 144px; height: 40px; }
+    }
+  </style>
 </head>
-<!-- Body Start -->
+<body>
 
-<body data-spy="scroll" data-target="#navbar-collapse-toggle" data-offset="90">
-    <!-- page loading -->
-    <div id="loading">
-        <div class="load-circle"><span class="one"></span></div>
-    </div>
-    <!-- End -->
-    <!-- Header -->
-    <header class="main-header">
-        <nav class="navbar header-nav header-white header-transparent navbar-expand-lg">
-            <div class="container">
-                <!-- Brand -->
-                <a class="navbar-brand" href="#">Joshua Neronha<span></span></a>
-                <!-- / -->
-                <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-toggle" aria-controls="navbar-collapse-toggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <!-- / -->
-                <!-- Top Menu -->
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse-toggle">
-                    <ul class="navbar-nav ml-auto">
-                        <li><a class="nav-link active" href="#home"><span>Home</span></a></li>
-                        <li><a class="nav-link" href="#about"><span>About Me</span></a></li>
-                        <li><a class="nav-link" href="#work"><span>Projects</span></a></li>
-                        <li><a class="nav-link" href="blog.html"><span>Blog</span></a></li>
-                        <li><a class="nav-link" href="#contactus"><span>Contact</span></a></li>
-                    </ul>
-                </div>
-                <!-- / -->
-            </div><!-- Container -->
-        </nav> <!-- Navbar -->
-    </header>
-    <!-- End Header -->
-    <main>
-        <!-- Home Banner -->
-        <section id="home" class="home-banner" style="background-image: url(static/img/bg-1.jpeg);">
+  <div class="container">
 
-
-            <div class="container">
-                <div class="row align-items-center full-screen">
-                    <div class="col-lg-12">
-                        <div class="hb-typo">
-                            <h1 class="font-alt">Joshua Neronha</h1>
-                            <h2>Airline Strategist, Engineer, and Data Scientist</h2>
-                            <br>
-                            <h6><b>Now:</b> Fleet and Network Strategy at American Airlines</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="nav social-icons justify-content-center justify-content-md-end">
-                <a href="https://github.com/joshuaneronha"><i class="ti-github"></i></a>
-                <a href="https://www.linkedin.com/in/joshuaneronha/"><i class="ti-linkedin"></i></a>
-            </div>
-        </section>
-        <!-- End Home Banner -->
-        <!-- About Me -->
-        <section id="about" class="section about-section after-left-section">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-6 my-3">
-                        <div class="img-box">
-                            <img src="static/img/about-me.png" title="" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 my-3">
-                        <div class="typo-box">
-                            <h3>Joshua Neronha</h3>
-                            <h5>Airline Strategist, Data Scientist, and Engineer</h5>
-                            <p class="lead">I enjoy solving unique problems with data, particularly those related to aviation.</p>
-                            <p>I've been at American Airlines since July 2022, where I've worked on a variety of projects involving fleet strategy, cabin configuration, and network design. Previously, as an undergrad, I worked in an optics laboratory as an undergraduate researcher optimizing antenna designs. I'm a big fan of traveling and spending time outdoors, particularly running and backpacking.</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Me -->
-        <!-- Our Skill -->
-        <!-- <section class="section skill-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 my-3">
-                        <div class="sm-title">
-                            <h4 class="font-alt">Education</h4>
-                        </div>
-                        <ul class="aducation-box theme-bg">
-                            <li>
-                                <span class="dark-bg">2018 - 2022</span>
-                                <h6><strong>Brown University</strong></h6>
-                                <h8>Sc.B in Mechanical Engineering</p>
-                                <p>GPA: 3.91 | Concentration GPA: 3.94</p>
-                                <p><strong>Relevant Coursework: </strong>Advanced Fluid Mechanics, Data Science, Optics, Deep Learning, Deterministic Operations Research, Partial Differential Equations, and Aerospace Fluid Mechanics</p>
-                                <p><strong>Activities: </strong>Undergraduate Researcher, Tour Guide Coordinator, Teaching Assistant, Member of ARRR!!! pirate a-capella, and leader of various political groups.</p>
-                            </li>
-                            <li>
-                                <span class="dark-bg">2014 - 2018</span>
-                                <h6><strong>North Kingstown High School</strong></h6>
-                                <p>GPA: 4.00 | Class Valedictorian</p>
-                                <p><strong>Activities:</strong>Student Government President, National Honor Society, Senior Jazz Band, and Mock Trial</p>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="sm-title">
-                            <h4 class="font-alt">Experience</h4>
-                        </div>
-                        <ul class="aducation-box dark-bg">
-                          <li>
-                              <span class="theme-bg">July 2022 - Present</span>
-                              <h6><strong>Strategy and Planning Analyst</strong></h6>
-                              <h8>American Airlines</p>
-                          </li>
-                            <li>
-                                <span class="theme-bg">May 2021 - December 2021</span>
-                                <h6><strong>Predictive Maintenance Intern</strong></h6>
-                                <h8>Textron Aviation</p>
-                                <p>During a summer and fall internship, I worked at Textron Aviation (which includes Cessna and Beechcraft) to predict aircraft failure using big data and machine learning techniques.</p>
-                            </li>
-                            <li>
-                                <span class="theme-bg">September 2019 - present</span>
-                                <h6><strong>Undergraduate Researcher</strong></h6>
-                                <h8>Mittleman Laboratory, Brown University</p>
-                                <p>I design and execute both computational and experimental analyses of novel antenna designs in the terahertz range, resulting in peer-reviewed journal publication.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 ml-auto my-3">
-                        <div class="sm-title">
-                            <h4 class="font-alt">Skills</h4>
-                        </div>
-                        <div class="skills-bg skill-box">
-                            <div class="skill-lt">
-                                <h6>Python</h6>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-in theme-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <span>90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-lt">
-                                <h6>Machine Learning</h6>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-in theme-bg" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                        <span>70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-lt">
-                                <h6>Data Viz (D3.js, Tableau)</h6>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-in theme-bg" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                        <span>80%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-lt">
-                                <h6>Matlab</h6>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-in theme-bg" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                        <span>85%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-lt">
-                                <h6>Data Analysis (SQL, Pandas...)</h6>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-in theme-bg" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                        <span>85%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-lt">
-                                <h6>COMSOL Multiphysics</h6>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-in theme-bg" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                        <span>70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- / -->
-        <!-- Portfolio -->
-        <section id="work" class="section gray-bg">
-            <div class="container">
-                <div class="row justify-content-center section-title text-center">
-                    <div class="col-lg-7">
-                        <h3 class="font-alt">My Projects</h3>
-                        <p>Somewhat old at this point, but a sampling of schoolwork, research, and personal projects I worked on before joining American. In most cases full code is available on Github!</p>
-                    </div>
-                </div>
-                <div class="portfolio-filter-01">
-                    <ul class="filter nav justify-content-center">
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".schoolwork">Schoolwork</li>
-                        <li data-filter=".research">Research</li>
-                        <li data-filter=".projects">Personal Projects</li>
-                    </ul>
-                </div> <!-- Portfolio Filter -->
-                <div class="portfolio-content row lightbox-gallery">
-                    <div class="col-sm-6 col-lg-4 grid-item projects">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href="https://github.com/joshuaneronha/Aircraft-History-Tracker">Aircraft History Tracker</a></h5>
-                                <span>Joint hardware / software project that shows the current location of the aircraft I have flown on.</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/aircraft-tracker.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/aircraft-tracker.png" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-                    <div class="col-sm-6 col-lg-4 grid-item schoolwork">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                  <h5><a href="https://github.com/joshuaneronha/pipeflow-nn">Solving Pipe Flow with Neural Networks</a></h5>
-                                  <span>Implemented a convolutional autoencoder to predict flow through a pipe, a classic fluid mechanics problem.</span>
-                              </div>
-                              <div class="portfolio-img">
-                                  <img src="https://raw.githubusercontent.com/joshuaneronha/pipeflow-nn/main/bestResultsPlots/0.png" title="" alt="">
-                                  <div class="portfolio-icon">
-                                      <a href="https://raw.githubusercontent.com/joshuaneronha/pipeflow-nn/main/bestResultsPlots/0.png" class="gallery-link">
-                                          <span class="ti-plus"></span>
-                                      </a>
-                                  </div>
-                              </div>
-                          </div>
-                    </div> <!-- grid item -->
-                    <div class="col-sm-6 col-lg-4 grid-item research">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href="https://aip.scitation.org/doi/full/10.1063/5.0033126">"Efficient leaky-wave antennas at terahertz frequencies generating highly directional beams"</a></h5>
-                                <span>Applied Physics Letters, 2020</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/journal1.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/journal1.png" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-                    <div class="col-sm-6 col-lg-4 grid-item projects">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href =  "https://joshuaneronha.github.io/nonstop-flight-model/">Nonstop Flight Prediction Model</a></h5>
-                                <span>Model and visualization estimating how many passengers would fly a new nonstop route based on USDOT data.</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/av5.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/av5.png" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-                    <div class="col-sm-6 col-lg-4 grid-item projects">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href="https://public.tableau.com/profile/joshua.neronha#!/vizhome/Covid_Vax_Dashboard/Dashboard1">COVID Vaccine Dashboard</a></h5>
-                                <span>Live tool visualizing vaccine rollout that scraped data using state and federal sources using Python, SQL, and Tableau.</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/vaxdash1.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/vaxdash1.png" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-                    <div class="col-sm-6 col-lg-4 grid-item projects">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href="https://github.com/stephensunyj/planerange">planerange.me</a></h5>
-                                <span>Simple web app created at Hack@Brown 2021 with Jay-Young Cho and Stephen Sun that visualizes aircraft range.</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/planerange.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/planerange.png" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-                    <div class="col-sm-6 col-lg-4 grid-item schoolwork">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href="https://github.com/jiantleman/data-science-pandAIRmic">Impact of Aviation on COVID</a></h5>
-                                <span>As part of CSCI 1951A, Data Science, we researched the effect of commercial aviation on COVID rates.</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/csproj.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/csproj.png"" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 grid-item schoolwork">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href = https://www.notion.so/ENGN-1860-Space-Bubble-Program-5b4a97979a1d4ba9a139c092c0591abb>Bubble Generator</a></h5>
-                                <span>Designed and built a single-bubble generator as part of ENGN 1860, Advanced Fluid Mechanics.</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/bubble.gif" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/bubble.gif" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-
-                    <div class="col-sm-6 col-lg-4 grid-item schoolwork">
-                        <div class="portfolio-box-01">
-                            <div class="portfolio-info">
-                                <h5><a href =  "/d3/index.html"> Interactive World Cup Dashboard</a></h5>
-                                <span>As part of a course assignment for Data Science, I built a from-scratch interactive dashboard using d3.js</span>
-                            </div>
-                            <div class="portfolio-img">
-                                <img src="static/img/d3.png" title="" alt="">
-                                <div class="portfolio-icon">
-                                    <a href="static/img/d3.png" class="gallery-link">
-                                        <span class="ti-plus"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- grid item -->
-                </div>
-            </div>
-        </section>
-        <!-- End Portfolio -->
-
-        <!-- Blog -->
-        <section id="blog" class="section gray-bg">
-            <div class="container">
-                <div class="row justify-content-center section-title text-center">
-                    <div class="col-lg-7">
-                        <h3 class="font-alt">Recent Posts</h3>
-                        <p>Sometimes I write about the things I do! You'll find a few recent posts here.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 my-3">
-                        <div class="blog-post">
-                            <div class="blog-img">
-                                <a href="/blog_posts/air_model_2.html">
-                                    <div class="data">
-                                        <span>MAY</span>
-                                        <small>12, 2021</small>
-                                    </div>
-                                    <img src="/static/img/corr.png" title="" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info">
-                                <h6><a href="/blog_posts/air_model_2.html">Adding neural networks to the flight prediction model</a></h6>
-                                <p>If you saw my previous post, you may have noticed that I chose to use a regression to build the model for a flight prediction model. But </p>
-                                <div class="btn-bar">
-                                    <a href="/blog_posts/air_model_2.html" class="px-btn-arrow">
-                                        <span>Read More</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="blog-post">
-                            <div class="blog-img">
-                                <a href="/blog_posts/air_model.html">
-                                    <div class="data">
-                                        <span>APR</span>
-                                        <small>21, 2021</small>
-                                    </div>
-                                    <img src="static/img/av4.png" title="" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info">
-                                <h6><a href="/blog_posts/air_model.html">Building a nonstop flight prediction model</a></h6>
-                                <p>Over the past few weeks, I've been working on one of my most ambitious projects to date: buillding a model that predicts how many people might fly on any given nonstop route and then visualizing it in an interesting way. I took a course on data science this past semester where I learned quite a bit about statistics, machine learning, and data visualization, so I figured this would be a great opportunity to apply my skills to a topic I find very interesting.</p>
-                                <div class="btn-bar">
-                                    <a href="/blog_posts/air_model.html" class="px-btn-arrow">
-                                        <span>Read More</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="blog-post">
-                            <div class="blog-img">
-                                <a href="/blog_posts/new_airline.html">
-                                    <div class="data">
-                                        <span>JAN</span>
-                                        <small>19, 2021</small>
-                                    </div>
-                                    <img src="static/img/av3.png" title="" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info">
-                                <h6><a href="/blog_posts/new_airline.html">What markets should a new low-cost carrier target?</a></h6>
-                                <p>With news of David Neeleman's new low-cost U.S. airline (Moxy / Breeze) slowly emerging over the past few years, I've often wondered what my strategy might be if I was starting a new low-cost carrier in the United States. So I decided to do a bit of research to figure out where the most underserved and/or overpriced markets in the continental U.S. are usi</p>
-                                <div class="btn-bar">
-                                    <a href="/blog_posts/new_airline.html" class="px-btn-arrow">
-                                        <span>Read More</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Blog -->
-        <!-- Contact  -->
-        <section id="contactus" class="section after-left-section">
-            <div class="container">
-                <div class="row align-items-center">
-
-                    <div class="col-lg-4 ml-auto my-3">
-                        <div class="contact-info">
-                            <div class="sm-title">
-                                <h4 class="font-alt">Get in touch!</h4>
-
-                            </div>
-                            <div class="media">
-                                <div class="icon">
-                                    <i class="ti-email"></i>
-                                </div>
-                                <span class="media-body">Email:<br />joshuajneronha (at) gmail dot com</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Contact  -->
-    </main>
-    <!-- Footer -->
-    <footer class="footer white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 my-2">
-                    <div class="nav justify-content-center justify-content-md-start">
-                        <a href="https://github.com/joshuaneronha"><i class="ti-github"></i></a>
-                        <a href="https://www.linkedin.com/in/joshuaneronha/"><i class="ti-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-6 my-2 text-center text-md-right">
-                    <p>Copyright 2024 Joshua Neronha. All rights reserved.</p>
-                </div>
-            </div>
+    <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+    <header>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">Airline Strategist, Data Scientist, & Engineer</p><!-- update title/role -->
+          <h1>Joshua Neronha</em></h1>
+          <p class="tagline">
+I'm a Brown Engineering grad interested at the intersection of the airline industry and data, currently working at American Airlines in long-haul international network planning.
+          </p>
+          <nav class="links" aria-label="Profile links">
+            <a href="https://github.com/joshuaneronha" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/joshuaneronha" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://scholar.google.com/citations?user=dRULtnkAAAAJ&hl=en target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+              Google Scholar
+            </a>
+          </nav>
         </div>
-    </footer>
-    <!-- End Footer -->
-    <script src="static/js/jquery-3.5.1.min.js"></script>
-    <script src="static/plugin/appear/jquery.appear.js"></script>
-    <script src="static/plugin/bootstrap/js/bootstrap.min.js"></script>
-    <script src="static/js/custom.js"></script>
-    <!-- end -->
-</body>
-<!-- Body End -->
 
-</html>
+        <!--
+          HEADSHOT — replace the placeholder block below with:
+          <img src="headshot.jpg" alt="Your Name" />
+          and remove the headshot-placeholder div.
+        -->
+        <div class="headshot">
+          <img src = "assets/headshot.png"
+        </div>
+      </div>
+    </header>
+
+    <!-- ══ EXPERIENCE ══════════════════════════════════════════════════ -->
+    <section aria-labelledby="exp-heading">
+      <h2 id="exp-heading">Experience</h2>
+
+      <!--
+        THUMBNAIL — set src to a logo file, e.g. src="logos/google.png"
+        Change size="lg" to size="sm" for a smaller thumbnail, or remove for default (52px).
+        The onerror handler shows the fallback building icon if the image is missing.
+      -->
+      <div class="entry">
+        <div class="entry-thumb" size="lg">
+          <img src="assets/aa.png" alt="Company logo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <svg style="display:none" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        </div>
+        <div class="entry-body">
+          <div class="entry-meta"><span class="entry-date">2022 – present</span></div>
+          <p class="entry-title">Sr. Network Strategy Analyst</p>
+          <p class="entry-sub">American Airlines</p>
+          <p class="entry-desc">Contributed to fleet strategy, domestic network planning, and international network planning for the Pacific.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ EDUCATION ═══════════════════════════════════════════════════ -->
+    <section aria-labelledby="edu-heading">
+      <h2 id="edu-heading">Education</h2>
+
+      <!-- Example: set src="assets/brown.png" for the Brown shield logo -->
+      <div class="entry">
+        <div class="entry-thumb" size="lg">
+          <img src="assets/brown.png" alt="Brown University"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <svg style="display:none" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V17c0 2.76 4.03 5 9 5s9-2.24 9-5v-5.82L23 9l-11-6zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99c0 .72-2.13 2.01-5 2.01s-5-1.29-5-2V13.27l5 2.73 5-2.73v2.72z"/></svg>
+        </div>
+        <div class="entry-body">
+          <div class="entry-meta"><span class="entry-date">2016 – 2020</span></div>
+          <p class="entry-title">Brown University</p>
+          <p class="entry-sub">B.S. in Mechanical Engineering</p>
+          <p class="entry-desc">Research in Mittleman Laboratory, tour guide, and engineering teaching assistant.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ PUBLICATIONS ════════════════════════════════════════════════ -->
+    <section aria-labelledby="pub-heading">
+      <h2 id="pub-heading">Publications</h2>
+
+      <!--
+        FIGURE — set src to a figure image from your paper, e.g. src="figures/paper1.png"
+        pub-thumb makes the image fill edge-to-edge (no padding) for richer previews.
+        Use size="lg" for a taller thumbnail when the figure has more detail.
+        Falls back to the document icon if the image path is missing.
+      -->
+      <div class="entry">
+        <div class="entry-thumb-pub pub-thumb" size="lg">
+          <img src="assets/nn.png" alt="Figure from paper"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <svg style="display:none" viewBox="0 0 48 48"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </div>
+        <div class="entry-body">
+          <div class="entry-meta"><span class="entry-date">2024</span></div>
+          <p class="entry-title">
+            <a href=https://par.nsf.gov/servlets/purl/10613539" target="_blank" rel="noopener">Using neural networks to design leaky-wave antennas for terahertz wireless links</a>
+          </p>
+          <p class="entry-sub"><strong>Joshua Neronha</strong>, Hichem Guerboukha, and Daniel Mittleman</p>
+          <span class="entry-venue">Journal of Infrared, Millimeter, and Terahertz Waves</span>
+          <p class="entry-desc">Proposes technique to use deep learning to design and then quickly fabricate high-frequency antennas that emit light in highly specific patterns</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-thumb pub-thumb" size="lg">
+          <img src="assets/conformal.png" alt="Figure from paper"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <svg style="display:none" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </div>
+        <div class="entry-body">
+          <div class="entry-meta"><span class="entry-date">2023</span></div>
+          <p class="entry-title">
+            <a href="https://www.nature.com/articles/s44172-023-00067-2.pdf" target="_blank" rel="noopener">Conformal leaky-wave antennas for wireless terahertz communications</a>
+          </p>
+          <p class="entry-sub">Hichem Guerboukha, Rabi Shrestha, <strong>Joshua Neronha</strong>, Zhaoji Fang, and Daniel Mittleman</p>
+          <span class="entry-venue">Nature Communications Engineering</span>
+          <p class="entry-desc">Applications of conformal (cylindrical) antennas for high-frequency wireless links</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-thumb pub-thumb" size="lg">
+          <img src="assets/trap.png" alt="Figure from paper"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <svg style="display:none" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </div>
+        <div class="entry-body">
+          <div class="entry-meta"><span class="entry-date">2023</span></div>
+          <p class="entry-title">
+            <a href="https://pubs.aip.org/aip/apl/article-pdf/doi/10.1063/5.0033126/19755004/261103_1_accepted_manuscript.pdf target="_blank" rel="noopener">Efficient leaky-wave antennas at terahertz frequencies generating highly directional beams</a>
+          </p>
+          <p class="entry-sub">Hichem Guerboukha, Rabi Shrestha, <strong>Joshua Neronha</strong>, Olivia Ryan, Malachi Hornbuckle, Zhaoji Fang, and Daniel Mittleman</p>
+          <span class="entry-venue">Applied Physics Letters</span>
+          <p class="entry-desc">Evaluates trapezoidal high-frequency antenna design that can emit light in highly specific directions</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══ CONTACT ═════════════════════════════════════════════════════ -->
+    <section aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+
+      <div class="contact-line">
+        <span class="contact-label">email</span>
+        <span class="contact-value">joshuajneronha (at) gmail (dot) com</span>
+      </div>
+
+    </section>
+
+    <!-- ══ FOOTER ══════════════════════════════════════════════════════
